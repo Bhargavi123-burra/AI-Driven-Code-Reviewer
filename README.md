@@ -1,132 +1,129 @@
-# 🤖 AI Code Reviewer
+🤖 Bhargavi's AI Code Reviewer
 
-[![Python](https://img.shields.io/badge/Python-3.10+-blue)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.29-orange)](https://streamlit.io/)
-[![Status](https://img.shields.io/badge/status-active-success)](https://github.com/)
+An AI-powered Python Code Reviewer built using Streamlit that analyzes Python code for:
 
+Syntax errors
 
----
+Style improvements (PEP8)
 
-## 🚀 Project Overview
+Unused variables
 
-**AI Code Reviewer** is a modern web application that enables developers and students to automatically review Python code using:
+AI-based improvement suggestions
 
-- **Syntax validation**
-- **Logical error detection**
-- **PEP8 style formatting**
-- **AI-powered code suggestions**
+👩‍💻 Developed by Bhargavi
 
-Built with **Python + Streamlit**, this tool is ideal for:
-- Beginners learning Python  
-- Developers wanting instant code feedback  
-- Students preparing for coding interviews  
-- Anyone who wants cleaner, error-free code
+Python Developer | AI & ML Enthusiast
 
----
+🚀 Project Overview
 
-## 🧠 Key Features
+Bhargavi's AI Code Reviewer is a smart web-based tool that helps developers automatically review Python code.
+It detects common coding issues, formats code cleanly, and provides AI-driven suggestions to improve code quality and readability.
 
-### ✔️ Code Analysis & Error Detection
-- Detects syntax errors using AST parsing  
-- Identifies common logical mistakes  
-- Provides line-by-line error reports
+This project is ideal for:
 
-### 🧹 PEP8 Code Formatting
-- Auto-formats Python code  
-- Ensures clean, readable, and standard-compliant code  
-- Improves consistency across projects
+Beginners learning Python
 
-### 🤖 AI-Powered Suggestions
-- Generates improvement suggestions using LLM  
-- Suggests better logic, structure, and readability  
-- Helps in learning best practices
+Students doing academic projects
 
-### 🧩 Interactive Streamlit UI
-- Clean UI with tabs for:
-  - Code Input
-  - Errors
-  - Suggestions
-  - Corrected Code
+Developers who want quick feedback on code
 
----
+✨ Features
 
-## 🏗️ Architecture & Workflow
+✅ Syntax Validation
+🎨 Code Style Correction (PEP8)
+🛑 Error Detection (Unused Variables, etc.)
+🤖 AI Improvement Suggestions
+🌐 User-friendly Web Interface (Streamlit)
 
-```mermaid
-flowchart LR
-    A[User Input Code] --> B[Code Parser]
-    B --> C[Error Detector]
-    B --> D[Style Checker]
-    C --> E[Error Report]
-    D --> F[Corrected Code]
-    A --> G[AI Suggester]
-    G --> H[AI Suggestions]
-    E --> I[Streamlit Output]
-    F --> I
-    H --> I
+🛠️ Tech Stack
 
-```
+Python
 
----
+Streamlit
 
-## 📂 Project Structure
+AST (Abstract Syntax Tree)
 
-```
+HuggingFace / AI Models
 
-ai-code-reviewer/
+LangChain
+
+GitHub
+
+📂 Project Structure
+📁 infosys/
 │
-├── app.py                 # Main Streamlit application
-├── code_parser.py         # Syntax parsing logic
-├── error_detector.py      # Error detection module
-├── style_checker.py       # PEP8 formatting module
-├── ai_suggester.py        # AI suggestion generator
-├── requirements.txt       # Project dependencies
-├── .env                   # API keys (ignored in Git)
-└── README.md              # Project documentation
+├── app.py                # Main Streamlit App
+├── code_parser.py        # Syntax validation
+├── style_checker.py      # Code formatting
+├── error_detector.py     # Static error detection
+├── ai_suggester.py       # AI-based suggestions
+├── requirements.txt      # Dependencies
+└── README.md             # Project Documentation
 
-````
+▶️ How to Run the Project
+1️⃣ Create Virtual Environment
+python -m venv venv
 
----
+2️⃣ Activate Environment
 
-## ▶️ How to Run the Project
+Windows:
 
-### 1️⃣ Install dependencies
-```bash
+venv\Scripts\activate
+
+3️⃣ Install Requirements
 pip install -r requirements.txt
-````
 
-### 2️⃣ Run the Streamlit app
+4️⃣ Set HuggingFace API Token
+setx HUGGINGFACE_API_TOKEN "your_token_here"
 
-```bash
+
+Restart terminal after this.
+
+5️⃣ Run Streamlit App
 streamlit run app.py
-```
 
-### 3️⃣ Open in browser
+📸 Screenshots
 
-After running, open the URL shown in the terminal
-(usually: **[http://localhost:8501](http://localhost:8501)**)
+✔ Code Analysis
+✔ Style Correction
+✔ Error Detection
+✔ AI Suggestions
 
----
+(You can add screenshots later)
 
-## 📸 Output
+🎯 Future Enhancements
 
-* Displays syntax and logical errors
-* Shows formatted Python code
-* Provides AI suggestions for improvement
+Add support for other languages
 
----
+Code complexity analysis
 
-## 🎓 Use Cases
+Auto-fix suggestions
 
-* Python learning and practice
-* Automated code review
-* Interview preparation
-* Academic and mini-project submissions
+Code export feature
 
----
+Cloud deployment
 
-## 🔗 Live Demo
+🧠 Learning Outcomes
 
-Try the app online:
+Through this project, I learned:
 
-👉 https://ai-code-reviewer-bs94x85mpt6v85v7vdk67q.streamlit.app/
+Python AST parsing
+
+Streamlit UI development
+
+AI integration using APIs
+
+Debugging & error handling
+
+Modular project design
+
+🤝 Contribution
+
+Feel free to fork and improve this project!
+Pull requests are welcome.
+
+📧 Contact
+
+Bhargavi
+📩 Email: (add your email)
+🔗 GitHub: (add your profile link)

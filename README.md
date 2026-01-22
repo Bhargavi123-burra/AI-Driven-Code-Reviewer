@@ -125,5 +125,5 @@ Pull requests are welcome.
 📧 Contact
 
 Bhargavi
-📩 Email: (add your email)
-🔗 GitHub: (add your profile link)
+📩 Email: (bhargaviburra2004@gmail.com)
+🔗 GitHub: (https://github.com/Bhargavi123-burra)

@@ -1,52 +1,26 @@
-from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
-from langchain_core.messages import HumanMessage
-from dotenv import load_dotenv
-import os
+def get_ai_suggestions(code):
+    suggestions = []
 
-load_dotenv()
+    if not code.strip():
+        return ["No code provided for analysis."]
 
-print("HF TOKEN:", os.getenv("HUGGINGFACEHUB_API_TOKEN"))  # 👈 ADD THIS LINE
+    if "print(" in code:
+        suggestions.append("Avoid using print statements in production code. Use logging instead.")
 
-llm = HuggingFaceEndpoint(
-    repo_id="google/flan-t5-large",
-    huggingfacehub_api_token=os.getenv("HUGGINGFACEHUB_API_TOKEN"),
-    temperature=0.3
-)
+    if "global" in code:
+        suggestions.append("Avoid global variables for better maintainability.")
 
+    if "def " in code and '"""' not in code:
+        suggestions.append("Add docstrings to your functions for better readability.")
 
-model = ChatHuggingFace(llm=llm)
+    if len(code.splitlines()) > 20:
+        suggestions.append("Consider splitting long code into smaller functions.")
 
+    if "except:" in code:
+        suggestions.append("Avoid bare except clauses. Catch specific exceptions.")
 
-def get_ai_suggestions(code_string):
-    """
-    WHAT IT DOES: Asks AI improvement ideas
-    """
-    prompt = f"""
-Review this Python code and suggest improvements: 
-{code_string}
+    if not suggestions:
+        suggestions.append("Your code looks well structured. Good job!")
 
-Provide 2-3 brief suggestions for:
-1. Code readability
-2. Performance
-3. Best practices
-"""
-
-    try:
-        response = model.invoke([HumanMessage(content=prompt)])
-        ai_message = response.content
-
-        return [{
-            "type": "AISuggestion",
-            "message": ai_message,
-            "severity": "Info"
-        }]
-
-    except Exception as e:
-        return [{
-            "type": "Error",
-            "message": str(e),   # convert exception to string
-            "severity": "Info"
-        }]
-
-    
+    return suggestions
 

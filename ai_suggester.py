@@ -1,26 +1,47 @@
-def get_ai_suggestions(code):
-    suggestions = []
+from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
+from langchain_core.messages import HumanMessage
+from dotenv import load_dotenv
 
-    if not code.strip():
-        return ["No code provided for analysis."]
+load_dotenv()
 
-    if "print(" in code:
-        suggestions.append("Avoid using print statements in production code. Use logging instead.")
+llm = HuggingFaceEndpoint(
+    repo_id='Qwen/Qwen2.5-7B-Instruct',
+    temperature=0.3
+)
 
-    if "global" in code:
-        suggestions.append("Avoid global variables for better maintainability.")
+model = ChatHuggingFace(llm=llm)
 
-    if "def " in code and '"""' not in code:
-        suggestions.append("Add docstrings to your functions for better readability.")
 
-    if len(code.splitlines()) > 20:
-        suggestions.append("Consider splitting long code into smaller functions.")
+def get_ai_suggestions(code_string):
+    """
+    WHAT IT DOES: Asks AI improvements ideas
+    """
+    prompt = f"""
+    Review this Python code and suggest improvements: 
+    {code_string}. 
+    Provide 2-3 brief suggestions for: 
+    1. Code readability
+    2. Performance
+    3. Best practices
+    """
 
-    if "except:" in code:
-        suggestions.append("Avoid bare except clauses. Catch specific exceptions.")
+    try: 
+        response = model.invoke(
+            [HumanMessage(content=prompt)]
+        )
 
-    if not suggestions:
-        suggestions.append("Your code looks well structured. Good job!")
+        ai_message = response.content
+        print(ai_message)
 
-    return suggestions
+        return [{
+            "type": "AISuggestion",
+            "message": ai_message,
+            "severity": "Info"
+        }]
+    except Exception as e:
+        return [{
+            "type": "Error",
+            "message": e,
+            "severity": "Info"
+        }]
 
